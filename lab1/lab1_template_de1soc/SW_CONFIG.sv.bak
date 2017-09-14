@@ -1,0 +1,3 @@
+module SW_CONFIG(sw0, sw1, sw2, sw3, out);
+
+endmodule 
