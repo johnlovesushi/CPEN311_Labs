@@ -22,7 +22,7 @@ agreement for further details.
 ; Case Sensitive   ;                                                     ;
 ; QXP Source       ; speed_reg_control.qxp                               ;
 ; Software Version ; Version 14.1.0 Build 186 12/03/2014 SJ Full Version ;
-; Date             ; Thu May 05 20:25:10 2016                            ;
+; Date             ; Thu May  5 20:25:10 2016                            ;
 ; Contents         ; Netlist Only                                        ;
 ; Family           ; 5CSEMA5F31C6                                        ;
 ; Device           ; CYCLONEV_SE90M_V_F896C6                             ;

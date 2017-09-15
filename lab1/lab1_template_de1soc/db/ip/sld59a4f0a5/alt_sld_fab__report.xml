@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2017.09.14.13:27:41"
- outputDirectory="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/">
+ date="2017.09.14.23:03:06"
+ outputDirectory="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/">
  <perimeter>
   <parameter
      name="DESIGN_HASH"
@@ -81,49 +81,50 @@
   <parameter name="MIRROR" value="0" />
   <generatedFiles>
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/alt_sld_fab.v"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/alt_sld_fab.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_presplit.sv"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_presplit.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_splitter.sv"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_splitter.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_sldfabric.vhd"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_sldfabric.vhd"
        type="VHDL"
        attributes="" />
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_ident.sv"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_ident.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="C:/altera/14.1/ip/altera/sld/core/altera_instrumentation_fabric/alt_sld_fab_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/core/altera_instrumentation_fabric/alt_sld_fab_hw.tcl" />
    <file
-       path="C:/altera/14.1/ip/altera/sld/core/altera_instrumentation_fabric/com.altera.superfabric.jar" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/core/altera_instrumentation_fabric/com.altera.superfabric.jar" />
    <file
-       path="C:/altera/14.1/quartus/sopc_builder/model/lib/com.altera.utilities.jar" />
+       path="/home/parallels/altera/14.1/quartus/sopc_builder/model/lib/com.altera.utilities.jar" />
    <file
-       path="C:/altera/14.1/quartus/sopc_builder/model/lib/hamcrest-all-1.3.jar" />
+       path="/home/parallels/altera/14.1/quartus/sopc_builder/model/lib/hamcrest-all-1.3.jar" />
    <file
-       path="C:/altera/14.1/quartus/sopc_builder/model/lib/commons-lang3-3.1.jar" />
-   <file path="C:/altera/14.1/quartus/sopc_builder/model/lib/javasysmon.jar" />
+       path="/home/parallels/altera/14.1/quartus/sopc_builder/model/lib/commons-lang3-3.1.jar" />
+   <file
+       path="/home/parallels/altera/14.1/quartus/sopc_builder/model/lib/javasysmon.jar" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="C:/altera/14.1/ip/altera/sld/core/altera_super_splitter/altera_super_splitter_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/core/altera_super_splitter/altera_super_splitter_hw.tcl" />
    <file
-       path="C:/altera/14.1/ip/altera/sld/core/altera_super_splitter/altera_sld_splitter_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/core/altera_super_splitter/altera_sld_splitter_hw.tcl" />
    <file
-       path="C:/altera/14.1/ip/altera/sld/jtag/altera_sld_jtag_hub/altera_sld_jtag_hub_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/jtag/altera_sld_jtag_hub/altera_sld_jtag_hub_hw.tcl" />
    <file
-       path="C:/altera/14.1/ip/altera/sld/core/altera_connection_identification_hub/altera_connection_identification_hub_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/core/altera_connection_identification_hub/altera_connection_identification_hub_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Debug" culprit="alt_sld_fab">queue size: 0 starting:alt_sld_fab "alt_sld_fab"</message>
@@ -165,14 +166,14 @@
   <parameter name="RECEIVE_WIDTHS" value="33" />
   <generatedFiles>
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_presplit.sv"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_presplit.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>
   <childGeneratedFiles/>
   <sourceFiles>
    <file
-       path="C:/altera/14.1/ip/altera/sld/core/altera_super_splitter/altera_super_splitter_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/core/altera_super_splitter/altera_super_splitter_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="alt_sld_fab" as="presplit" />
@@ -195,14 +196,14 @@
   <parameter name="ADD_INTERFACE_ASGN" value="0" />
   <generatedFiles>
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_splitter.sv"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_splitter.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>
   <childGeneratedFiles/>
   <sourceFiles>
    <file
-       path="C:/altera/14.1/ip/altera/sld/core/altera_super_splitter/altera_sld_splitter_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/core/altera_super_splitter/altera_sld_splitter_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="alt_sld_fab" as="splitter" />
@@ -234,14 +235,14 @@
   <parameter name="FORCE_IR_CAPTURE_FEATURE" value="1" />
   <generatedFiles>
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_sldfabric.vhd"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_sldfabric.vhd"
        type="VHDL"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles/>
   <sourceFiles>
    <file
-       path="C:/altera/14.1/ip/altera/sld/jtag/altera_sld_jtag_hub/altera_sld_jtag_hub_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/jtag/altera_sld_jtag_hub/altera_sld_jtag_hub_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="alt_sld_fab" as="sldfabric" />
@@ -262,14 +263,14 @@
   <parameter name="DESIGN_HASH" value="949b095db762a356b524" />
   <generatedFiles>
    <file
-       path="C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_ident.sv"
+       path="/home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_ident.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>
   <childGeneratedFiles/>
   <sourceFiles>
    <file
-       path="C:/altera/14.1/ip/altera/sld/core/altera_connection_identification_hub/altera_connection_identification_hub_hw.tcl" />
+       path="/home/parallels/altera/14.1/ip/altera/sld/core/altera_connection_identification_hub/altera_connection_identification_hub_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="alt_sld_fab" as="ident" />

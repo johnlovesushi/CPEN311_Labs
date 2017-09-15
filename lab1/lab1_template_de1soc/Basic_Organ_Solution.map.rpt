@@ -1,6 +1,6 @@
 Analysis & Synthesis report for Basic_Organ_Solution
-Thu Sep 14 13:27:47 2017
-Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Full Version
+Thu Sep 14 23:03:14 2017
+Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
 ---------------------
@@ -84,27 +84,27 @@ agreement for further details.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Sep 14 13:27:47 2017       ;
-; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Full Version ;
-; Revision Name                   ; Basic_Organ_Solution                        ;
-; Top-level Entity Name           ; Basic_Organ_Solution                        ;
-; Family                          ; Cyclone V                                   ;
-; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 5262                                        ;
-; Total pins                      ; 147                                         ;
-; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 55,552                                      ;
-; Total DSP Blocks                ; 0                                           ;
-; Total HSSI RX PCSs              ; 0                                           ;
-; Total HSSI PMA RX Deserializers ; 0                                           ;
-; Total HSSI TX PCSs              ; 0                                           ;
-; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 0                                           ;
-; Total DLLs                      ; 0                                           ;
-+---------------------------------+---------------------------------------------+
++------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                 ;
++---------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Sep 14 23:03:13 2017      ;
+; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
+; Revision Name                   ; Basic_Organ_Solution                       ;
+; Top-level Entity Name           ; Basic_Organ_Solution                       ;
+; Family                          ; Cyclone V                                  ;
+; Logic utilization (in ALMs)     ; N/A                                        ;
+; Total registers                 ; 5262                                       ;
+; Total pins                      ; 147                                        ;
+; Total virtual pins              ; 0                                          ;
+; Total block memory bits         ; 55,552                                     ;
+; Total DSP Blocks                ; 0                                          ;
+; Total HSSI RX PCSs              ; 0                                          ;
+; Total HSSI PMA RX Deserializers ; 0                                          ;
+; Total HSSI TX PCSs              ; 0                                          ;
+; Total HSSI PMA TX Serializers   ; 0                                          ;
+; Total PLLs                      ; 0                                          ;
+; Total DLLs                      ; 0                                          ;
++---------------------------------+--------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -201,91 +201,91 @@ agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ; < 0.1%      ;
+;     Processor 2            ; < 0.1%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                     ;
-+--------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------+-------------+
-; File Name with User-Entered Path                       ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                       ; Library     ;
-+--------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------+-------------+
-; SevenSegmentDisplayDecoder.qxp                         ; yes             ; User File                                    ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/SevenSegmentDisplayDecoder.qxp                         ;             ;
-; speed_reg_control.qxp                                  ; yes             ; User File                                    ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/speed_reg_control.qxp                                  ;             ;
-; var_clk_div32.qxp                                      ; yes             ; User File                                    ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/var_clk_div32.qxp                                      ;             ;
-; to_slow_clk_interface.qxp                              ; yes             ; User File                                    ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/to_slow_clk_interface.qxp                              ;             ;
-; LCD_Scope_Encapsulated_pacoblaze.qxp                   ; yes             ; User File                                    ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/LCD_Scope_Encapsulated_pacoblaze.qxp                   ;             ;
-; audio_controller.qxp                                   ; yes             ; User File                                    ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/audio_controller.qxp                                   ;             ;
-; async_trap_and_reset_gen_1_pulse.qxp                   ; yes             ; User File                                    ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/async_trap_and_reset_gen_1_pulse.qxp                   ;             ;
-; Basic_Organ_Solution.v                                 ; yes             ; User Verilog HDL File                        ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/Basic_Organ_Solution.v                                 ;             ;
-; SW_CONFIG.sv                                           ; yes             ; User SystemVerilog HDL File                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/SW_CONFIG.sv                                           ;             ;
-; doublesync.v                                           ; yes             ; Auto-Found Verilog HDL File                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/doublesync.v                                           ;             ;
-; generate_arbitrary_divided_clk32.v                     ; yes             ; Auto-Found Verilog HDL File                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/generate_arbitrary_divided_clk32.v                     ;             ;
-; scope_capture.v                                        ; yes             ; Auto-Found Verilog HDL File                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/scope_capture.v                                        ;             ;
-; lcd_scope_encapsulated_pacoblaze_wrapper.v             ; yes             ; Auto-Found Verilog HDL File                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/lcd_scope_encapsulated_pacoblaze_wrapper.v             ;             ;
-; sld_signaltap.vhd                                      ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/sld_signaltap.vhd                                                   ;             ;
-; sld_signaltap_impl.vhd                                 ; yes             ; Encrypted Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sld_signaltap_impl.vhd                                              ;             ;
-; sld_ela_control.vhd                                    ; yes             ; Encrypted Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sld_ela_control.vhd                                                 ;             ;
-; lpm_shiftreg.tdf                                       ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_shiftreg.tdf                                                    ;             ;
-; lpm_constant.inc                                       ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_constant.inc                                                    ;             ;
-; dffeea.inc                                             ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/dffeea.inc                                                          ;             ;
-; aglobal141.inc                                         ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/aglobal141.inc                                                      ;             ;
-; sld_mbpmg.vhd                                          ; yes             ; Encrypted Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sld_mbpmg.vhd                                                       ;             ;
-; sld_ela_trigger_flow_mgr.vhd                           ; yes             ; Encrypted Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sld_ela_trigger_flow_mgr.vhd                                        ;             ;
-; sld_buffer_manager.vhd                                 ; yes             ; Encrypted Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sld_buffer_manager.vhd                                              ;             ;
-; altsyncram.tdf                                         ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/altsyncram.tdf                                                      ;             ;
-; stratix_ram_block.inc                                  ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                               ;             ;
-; lpm_mux.inc                                            ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_mux.inc                                                         ;             ;
-; lpm_decode.inc                                         ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_decode.inc                                                      ;             ;
-; a_rdenreg.inc                                          ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                       ;             ;
-; altrom.inc                                             ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/altrom.inc                                                          ;             ;
-; altram.inc                                             ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/altram.inc                                                          ;             ;
-; altdpram.inc                                           ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/altdpram.inc                                                        ;             ;
-; db/altsyncram_88e4.tdf                                 ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/altsyncram_88e4.tdf                                 ;             ;
-; altdpram.tdf                                           ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/altdpram.tdf                                                        ;             ;
-; memmodes.inc                                           ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/others/maxplus2/memmodes.inc                                                      ;             ;
-; a_hdffe.inc                                            ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/a_hdffe.inc                                                         ;             ;
-; alt_le_rden_reg.inc                                    ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/alt_le_rden_reg.inc                                                 ;             ;
-; altsyncram.inc                                         ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/altsyncram.inc                                                      ;             ;
-; lpm_mux.tdf                                            ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_mux.tdf                                                         ;             ;
-; muxlut.inc                                             ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/muxlut.inc                                                          ;             ;
-; bypassff.inc                                           ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/bypassff.inc                                                        ;             ;
-; altshift.inc                                           ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/altshift.inc                                                        ;             ;
-; db/mux_elc.tdf                                         ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/mux_elc.tdf                                         ;             ;
-; lpm_decode.tdf                                         ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_decode.tdf                                                      ;             ;
-; declut.inc                                             ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/declut.inc                                                          ;             ;
-; lpm_compare.inc                                        ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_compare.inc                                                     ;             ;
-; db/decode_vnf.tdf                                      ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/decode_vnf.tdf                                      ;             ;
-; lpm_counter.tdf                                        ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_counter.tdf                                                     ;             ;
-; lpm_add_sub.inc                                        ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_add_sub.inc                                                     ;             ;
-; cmpconst.inc                                           ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/cmpconst.inc                                                        ;             ;
-; lpm_counter.inc                                        ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_counter.inc                                                     ;             ;
-; alt_counter_stratix.inc                                ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/alt_counter_stratix.inc                                             ;             ;
-; db/cntr_qai.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/cntr_qai.tdf                                        ;             ;
-; db/cmpr_h9c.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/cmpr_h9c.tdf                                        ;             ;
-; db/cntr_4vi.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/cntr_4vi.tdf                                        ;             ;
-; db/cntr_09i.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/cntr_09i.tdf                                        ;             ;
-; db/cmpr_c9c.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/cmpr_c9c.tdf                                        ;             ;
-; db/cntr_kri.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/cntr_kri.tdf                                        ;             ;
-; db/cmpr_99c.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/cmpr_99c.tdf                                        ;             ;
-; sld_rom_sr.vhd                                         ; yes             ; Encrypted Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sld_rom_sr.vhd                                                      ;             ;
-; sld_hub.vhd                                            ; yes             ; Encrypted Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sld_hub.vhd                                                         ; work        ;
-; db/ip/sld59a4f0a5/alt_sld_fab.v                        ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/alt_sld_fab.v                        ; alt_sld_fab ;
-; db/ip/sld59a4f0a5/submodules/alt_sld_fab_ident.sv      ; yes             ; Auto-Found SystemVerilog HDL File            ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_ident.sv      ; alt_sld_fab ;
-; db/ip/sld59a4f0a5/submodules/alt_sld_fab_presplit.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_presplit.sv   ; alt_sld_fab ;
-; db/ip/sld59a4f0a5/submodules/alt_sld_fab_sldfabric.vhd ; yes             ; Encrypted Auto-Found VHDL File               ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_sldfabric.vhd ; alt_sld_fab ;
-; db/ip/sld59a4f0a5/submodules/alt_sld_fab_splitter.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Users/g5z0b/Documents/CPEN 311/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_splitter.sv   ; alt_sld_fab ;
-; sld_jtag_hub.vhd                                       ; yes             ; Encrypted Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                                    ;             ;
-; ALTERA_lcdscp2.hex.mif                                 ; yes             ; Auto-Found Memory Initialization File        ; ALTERA_lcdscp2.hex.mif                                                                                             ;             ;
-+--------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------+-------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                   ;
++--------------------------------------------------------+-----------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-------------+
+; File Name with User-Entered Path                       ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                                     ; Library     ;
++--------------------------------------------------------+-----------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-------------+
+; SevenSegmentDisplayDecoder.qxp                         ; yes             ; User File                                    ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/SevenSegmentDisplayDecoder.qxp                         ;             ;
+; speed_reg_control.qxp                                  ; yes             ; User File                                    ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/speed_reg_control.qxp                                  ;             ;
+; var_clk_div32.qxp                                      ; yes             ; User File                                    ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/var_clk_div32.qxp                                      ;             ;
+; to_slow_clk_interface.qxp                              ; yes             ; User File                                    ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/to_slow_clk_interface.qxp                              ;             ;
+; LCD_Scope_Encapsulated_pacoblaze.qxp                   ; yes             ; User File                                    ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/LCD_Scope_Encapsulated_pacoblaze.qxp                   ;             ;
+; audio_controller.qxp                                   ; yes             ; User File                                    ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/audio_controller.qxp                                   ;             ;
+; async_trap_and_reset_gen_1_pulse.qxp                   ; yes             ; User File                                    ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/async_trap_and_reset_gen_1_pulse.qxp                   ;             ;
+; Basic_Organ_Solution.v                                 ; yes             ; User Verilog HDL File                        ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/Basic_Organ_Solution.v                                 ;             ;
+; SW_CONFIG.sv                                           ; yes             ; User SystemVerilog HDL File                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/SW_CONFIG.sv                                           ;             ;
+; doublesync.v                                           ; yes             ; Auto-Found Verilog HDL File                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/doublesync.v                                           ;             ;
+; Generate_Arbitrary_Divided_Clk32.v                     ; yes             ; Auto-Found Verilog HDL File                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/Generate_Arbitrary_Divided_Clk32.v                     ;             ;
+; scope_capture.v                                        ; yes             ; Auto-Found Verilog HDL File                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/scope_capture.v                                        ;             ;
+; LCD_Scope_Encapsulated_pacoblaze_wrapper.v             ; yes             ; Auto-Found Verilog HDL File                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/LCD_Scope_Encapsulated_pacoblaze_wrapper.v             ;             ;
+; sld_signaltap.vhd                                      ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_signaltap.vhd                                                    ;             ;
+; sld_signaltap_impl.vhd                                 ; yes             ; Encrypted Megafunction                       ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_signaltap_impl.vhd                                               ;             ;
+; sld_ela_control.vhd                                    ; yes             ; Encrypted Megafunction                       ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_ela_control.vhd                                                  ;             ;
+; lpm_shiftreg.tdf                                       ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_shiftreg.tdf                                                     ;             ;
+; lpm_constant.inc                                       ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_constant.inc                                                     ;             ;
+; dffeea.inc                                             ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/dffeea.inc                                                           ;             ;
+; aglobal141.inc                                         ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/aglobal141.inc                                                       ;             ;
+; sld_mbpmg.vhd                                          ; yes             ; Encrypted Megafunction                       ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_mbpmg.vhd                                                        ;             ;
+; sld_ela_trigger_flow_mgr.vhd                           ; yes             ; Encrypted Megafunction                       ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_ela_trigger_flow_mgr.vhd                                         ;             ;
+; sld_buffer_manager.vhd                                 ; yes             ; Encrypted Megafunction                       ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_buffer_manager.vhd                                               ;             ;
+; altsyncram.tdf                                         ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/altsyncram.tdf                                                       ;             ;
+; stratix_ram_block.inc                                  ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                ;             ;
+; lpm_mux.inc                                            ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_mux.inc                                                          ;             ;
+; lpm_decode.inc                                         ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_decode.inc                                                       ;             ;
+; a_rdenreg.inc                                          ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                        ;             ;
+; altrom.inc                                             ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/altrom.inc                                                           ;             ;
+; altram.inc                                             ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/altram.inc                                                           ;             ;
+; altdpram.inc                                           ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/altdpram.inc                                                         ;             ;
+; db/altsyncram_88e4.tdf                                 ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/altsyncram_88e4.tdf                                 ;             ;
+; altdpram.tdf                                           ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/altdpram.tdf                                                         ;             ;
+; memmodes.inc                                           ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/others/maxplus2/memmodes.inc                                                       ;             ;
+; a_hdffe.inc                                            ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/a_hdffe.inc                                                          ;             ;
+; alt_le_rden_reg.inc                                    ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/alt_le_rden_reg.inc                                                  ;             ;
+; altsyncram.inc                                         ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/altsyncram.inc                                                       ;             ;
+; lpm_mux.tdf                                            ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_mux.tdf                                                          ;             ;
+; muxlut.inc                                             ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/muxlut.inc                                                           ;             ;
+; bypassff.inc                                           ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/bypassff.inc                                                         ;             ;
+; altshift.inc                                           ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/altshift.inc                                                         ;             ;
+; db/mux_elc.tdf                                         ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/mux_elc.tdf                                         ;             ;
+; lpm_decode.tdf                                         ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_decode.tdf                                                       ;             ;
+; declut.inc                                             ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/declut.inc                                                           ;             ;
+; lpm_compare.inc                                        ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_compare.inc                                                      ;             ;
+; db/decode_vnf.tdf                                      ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/decode_vnf.tdf                                      ;             ;
+; lpm_counter.tdf                                        ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_counter.tdf                                                      ;             ;
+; lpm_add_sub.inc                                        ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_add_sub.inc                                                      ;             ;
+; cmpconst.inc                                           ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/cmpconst.inc                                                         ;             ;
+; lpm_counter.inc                                        ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/lpm_counter.inc                                                      ;             ;
+; alt_counter_stratix.inc                                ; yes             ; Megafunction                                 ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/alt_counter_stratix.inc                                              ;             ;
+; db/cntr_qai.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/cntr_qai.tdf                                        ;             ;
+; db/cmpr_h9c.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/cmpr_h9c.tdf                                        ;             ;
+; db/cntr_4vi.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/cntr_4vi.tdf                                        ;             ;
+; db/cntr_09i.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/cntr_09i.tdf                                        ;             ;
+; db/cmpr_c9c.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/cmpr_c9c.tdf                                        ;             ;
+; db/cntr_kri.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/cntr_kri.tdf                                        ;             ;
+; db/cmpr_99c.tdf                                        ; yes             ; Auto-Generated Megafunction                  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/cmpr_99c.tdf                                        ;             ;
+; sld_rom_sr.vhd                                         ; yes             ; Encrypted Megafunction                       ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_rom_sr.vhd                                                       ;             ;
+; sld_hub.vhd                                            ; yes             ; Encrypted Megafunction                       ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_hub.vhd                                                          ; work        ;
+; db/ip/sld59a4f0a5/alt_sld_fab.v                        ; yes             ; Encrypted Auto-Found Verilog HDL File        ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/alt_sld_fab.v                        ; alt_sld_fab ;
+; db/ip/sld59a4f0a5/submodules/alt_sld_fab_ident.sv      ; yes             ; Auto-Found SystemVerilog HDL File            ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_ident.sv      ; alt_sld_fab ;
+; db/ip/sld59a4f0a5/submodules/alt_sld_fab_presplit.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_presplit.sv   ; alt_sld_fab ;
+; db/ip/sld59a4f0a5/submodules/alt_sld_fab_sldfabric.vhd ; yes             ; Encrypted Auto-Found VHDL File               ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_sldfabric.vhd ; alt_sld_fab ;
+; db/ip/sld59a4f0a5/submodules/alt_sld_fab_splitter.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; /home/parallels/Documents/CPEN 311/CPEN311_Labs/lab1/lab1_template_de1soc/db/ip/sld59a4f0a5/submodules/alt_sld_fab_splitter.sv   ; alt_sld_fab ;
+; sld_jtag_hub.vhd                                       ; yes             ; Encrypted Megafunction                       ; /home/parallels/altera/14.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                                     ;             ;
+; ALTERA_lcdscp2.hex.mif                                 ; yes             ; Auto-Found Memory Initialization File        ; ALTERA_lcdscp2.hex.mif                                                                                                           ;             ;
++--------------------------------------------------------+-----------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------+
@@ -295,12 +295,12 @@ agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------------------------+
 ; Estimate of Logic utilization (ALMs needed) ; 3100                                                                                 ;
 ;                                             ;                                                                                      ;
-; Combinational ALUT usage for logic          ; 2004                                                                                 ;
+; Combinational ALUT usage for logic          ; 2005                                                                                 ;
 ;     -- 7 input functions                    ; 22                                                                                   ;
 ;     -- 6 input functions                    ; 820                                                                                  ;
 ;     -- 5 input functions                    ; 455                                                                                  ;
 ;     -- 4 input functions                    ; 145                                                                                  ;
-;     -- <=3 input functions                  ; 562                                                                                  ;
+;     -- <=3 input functions                  ; 563                                                                                  ;
 ;                                             ;                                                                                      ;
 ; Dedicated logic registers                   ; 5262                                                                                 ;
 ;                                             ;                                                                                      ;
@@ -312,7 +312,7 @@ agreement for further details.
 ;                                             ;                                                                                      ;
 ; Maximum fan-out node                        ; Generate_Arbitrary_Divided_Clk32:Generate_LCD_scope_Clk|var_clk_div32:Div_Clk|tc_reg ;
 ; Maximum fan-out                             ; 2712                                                                                 ;
-; Total fan-out                               ; 31046                                                                                ;
+; Total fan-out                               ; 31049                                                                                ;
 ; Average fan-out                             ; 3.90                                                                                 ;
 +---------------------------------------------+--------------------------------------------------------------------------------------+
 
@@ -322,7 +322,7 @@ agreement for further details.
 +---------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                              ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                         ; Library Name ;
 +---------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |Basic_Organ_Solution                                                                                   ; 2004 (45)         ; 5262 (50)    ; 55552             ; 0          ; 147  ; 0            ; |Basic_Organ_Solution                                                                                                                                                                                                                                                                                                                                       ; work         ;
+; |Basic_Organ_Solution                                                                                   ; 2005 (45)         ; 5262 (50)    ; 55552             ; 0          ; 147  ; 0            ; |Basic_Organ_Solution                                                                                                                                                                                                                                                                                                                                       ; work         ;
 ;    |Generate_Arbitrary_Divided_Clk32:Gen_1KHz_clk|                                                      ; 49 (1)            ; 39 (0)       ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|Generate_Arbitrary_Divided_Clk32:Gen_1KHz_clk                                                                                                                                                                                                                                                                                         ; work         ;
 ;       |var_clk_div32:Div_Clk|                                                                           ; 48 (48)           ; 39 (39)      ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|Generate_Arbitrary_Divided_Clk32:Gen_1KHz_clk|var_clk_div32:Div_Clk                                                                                                                                                                                                                                                                   ; work         ;
 ;    |Generate_Arbitrary_Divided_Clk32:Gen_2Hz_clk|                                                       ; 48 (0)            ; 39 (0)       ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|Generate_Arbitrary_Divided_Clk32:Gen_2Hz_clk                                                                                                                                                                                                                                                                                          ; work         ;
@@ -340,7 +340,7 @@ agreement for further details.
 ;                |pacoblaze3_register:register|                                                           ; 56 (56)           ; 128 (128)    ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|LCD_Scope_Encapsulated_pacoblaze_wrapper:LCD_LED_scope|LCD_Scope_Encapsulated_pacoblaze:LCD_Scope_Encapsulated_pacoblaze_inst|LCD_SCOPE_Verilog_pacoblaze:Internal_LCD_Scope|pacoblaze3:led_8seg_kcpsm|pacoblaze3_register:register                                                                                                   ; work         ;
 ;                |pacoblaze3_scratch:scratch|                                                             ; 128 (128)         ; 512 (512)    ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|LCD_Scope_Encapsulated_pacoblaze_wrapper:LCD_LED_scope|LCD_Scope_Encapsulated_pacoblaze:LCD_Scope_Encapsulated_pacoblaze_inst|LCD_SCOPE_Verilog_pacoblaze:Internal_LCD_Scope|pacoblaze3:led_8seg_kcpsm|pacoblaze3_scratch:scratch                                                                                                     ; work         ;
 ;                |pacoblaze3_stack:stack|                                                                 ; 49 (49)           ; 325 (325)    ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|LCD_Scope_Encapsulated_pacoblaze_wrapper:LCD_LED_scope|LCD_Scope_Encapsulated_pacoblaze:LCD_Scope_Encapsulated_pacoblaze_inst|LCD_SCOPE_Verilog_pacoblaze:Internal_LCD_Scope|pacoblaze3:led_8seg_kcpsm|pacoblaze3_stack:stack                                                                                                         ; work         ;
-;    |SW_CONFIG:comb_25|                                                                                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|SW_CONFIG:comb_25                                                                                                                                                                                                                                                                                                                     ; work         ;
+;    |SW_CONFIG:comb_25|                                                                                  ; 8 (8)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|SW_CONFIG:comb_25                                                                                                                                                                                                                                                                                                                     ; work         ;
 ;    |SevenSegmentDisplayDecoder:SevenSegmentDisplayDecoder_inst0|                                        ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|SevenSegmentDisplayDecoder:SevenSegmentDisplayDecoder_inst0                                                                                                                                                                                                                                                                           ; work         ;
 ;    |SevenSegmentDisplayDecoder:SevenSegmentDisplayDecoder_inst1|                                        ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|SevenSegmentDisplayDecoder:SevenSegmentDisplayDecoder_inst1                                                                                                                                                                                                                                                                           ; work         ;
 ;    |SevenSegmentDisplayDecoder:SevenSegmentDisplayDecoder_inst2|                                        ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Basic_Organ_Solution|SevenSegmentDisplayDecoder:SevenSegmentDisplayDecoder_inst2                                                                                                                                                                                                                                                                           ; work         ;
@@ -776,15 +776,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                                                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[2]                    ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|identity_contrib_shift_reg[1]           ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|identity_contrib_shift_reg[3]           ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[1]                    ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|sldfabric_ident_writedata[2]                                                                                         ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|mixer_addr_reg_internal[1]              ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg|word_counter[2] ;
-; 7:1                ; 9 bits    ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|irsr_reg[6]                             ;
-; 8:1                ; 10 bits   ; 50 LEs        ; 20 LEs               ; 30 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|irf_reg[1][8]                           ;
-; 7:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|shadow_irf_reg[1][3]                    ;
-; 34:1               ; 4 bits    ; 88 LEs        ; 64 LEs               ; 24 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|design_hash_reg[2]                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|sldfabric_ident_writedata[0]                                                                                         ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|mixer_addr_reg_internal[2]              ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg|word_counter[4] ;
+; 7:1                ; 9 bits    ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|irsr_reg[4]                             ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 20 LEs               ; 30 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|irf_reg[1][0]                           ;
+; 7:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|shadow_irf_reg[1][9]                    ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 64 LEs               ; 24 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|design_hash_reg[0]                      ;
 ; 20:1               ; 4 bits    ; 52 LEs        ; 36 LEs               ; 16 LEs                 ; Yes        ; |Basic_Organ_Solution|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg|WORD_SR[2]      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -3281,13 +3281,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SLD                                                                       ; 32    ;
 ;     plain                                                                     ; 44    ;
 ; arriav_io_obuf                                                                ; 60    ;
-; arriav_lcell_comb                                                             ; 56    ;
+; arriav_lcell_comb                                                             ; 57    ;
 ;     arith                                                                     ; 32    ;
 ;         1 data inputs                                                         ; 32    ;
-;     normal                                                                    ; 24    ;
+;     normal                                                                    ; 25    ;
 ;         0 data inputs                                                         ; 2     ;
 ;         1 data inputs                                                         ; 8     ;
-;         2 data inputs                                                         ; 1     ;
+;         2 data inputs                                                         ; 2     ;
 ;         3 data inputs                                                         ; 2     ;
 ;         4 data inputs                                                         ; 7     ;
 ;         5 data inputs                                                         ; 2     ;
@@ -3981,11 +3981,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 14.1.0 Build 186 12/03/2014 SJ Full Version
-    Info: Processing started: Thu Sep 14 13:27:15 2017
+    Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+    Info: Processing started: Thu Sep 14 23:02:45 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Basic_Organ_Solution -c Basic_Organ_Solution
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file sevensegmentdisplaydecoder.qxp
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file SevenSegmentDisplayDecoder.qxp
     Info (12023): Found entity 1: SevenSegmentDisplayDecoder
 Info (12021): Found 1 design units, including 1 entities, in source file speed_reg_control.qxp
     Info (12023): Found entity 1: speed_reg_control
@@ -3993,14 +3993,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file var_clk
     Info (12023): Found entity 1: var_clk_div32
 Info (12021): Found 1 design units, including 1 entities, in source file to_slow_clk_interface.qxp
     Info (12023): Found entity 1: to_slow_clk_interface
-Info (12021): Found 1 design units, including 1 entities, in source file lcd_scope_encapsulated_pacoblaze.qxp
+Info (12021): Found 1 design units, including 1 entities, in source file LCD_Scope_Encapsulated_pacoblaze.qxp
     Info (12023): Found entity 1: LCD_Scope_Encapsulated_pacoblaze
 Info (12021): Found 1 design units, including 1 entities, in source file audio_controller.qxp
     Info (12023): Found entity 1: audio_controller
 Info (12021): Found 1 design units, including 1 entities, in source file async_trap_and_reset_gen_1_pulse.qxp
     Info (12023): Found entity 1: async_trap_and_reset_gen_1_pulse
 Warning (10238): Verilog Module Declaration warning at Basic_Organ_Solution.v(40): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "Basic_Organ_Solution"
-Info (12021): Found 1 design units, including 1 entities, in source file basic_organ_solution.v
+Info (12021): Found 1 design units, including 1 entities, in source file Basic_Organ_Solution.v
     Info (12023): Found entity 1: Basic_Organ_Solution
 Warning (10229): Verilog HDL Expression warning at SW_CONFIG.sv(7): truncated literal to match 8 bits
 Warning (10229): Verilog HDL Expression warning at SW_CONFIG.sv(8): truncated literal to match 8 bits
@@ -4010,7 +4010,7 @@ Warning (10229): Verilog HDL Expression warning at SW_CONFIG.sv(11): truncated l
 Warning (10229): Verilog HDL Expression warning at SW_CONFIG.sv(12): truncated literal to match 8 bits
 Warning (10229): Verilog HDL Expression warning at SW_CONFIG.sv(13): truncated literal to match 8 bits
 Warning (10229): Verilog HDL Expression warning at SW_CONFIG.sv(14): truncated literal to match 8 bits
-Info (12021): Found 1 design units, including 1 entities, in source file sw_config.sv
+Info (12021): Found 1 design units, including 1 entities, in source file SW_CONFIG.sv
     Info (12023): Found entity 1: SW_CONFIG
 Critical Warning (10846): Verilog HDL Instantiation warning at Basic_Organ_Solution.v(203): instance has no name
 Info (12127): Elaborating entity "Basic_Organ_Solution" for the top level hierarchy
@@ -4029,14 +4029,14 @@ Info (12128): Elaborating entity "SW_CONFIG" for hierarchy "SW_CONFIG:comb_25"
 Warning (12125): Using design file doublesync.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: doublesync
 Info (12128): Elaborating entity "doublesync" for hierarchy "doublesync:user_scope_enable_sync1"
-Warning (12125): Using design file generate_arbitrary_divided_clk32.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+Warning (12125): Using design file Generate_Arbitrary_Divided_Clk32.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: Generate_Arbitrary_Divided_Clk32
 Info (12128): Elaborating entity "Generate_Arbitrary_Divided_Clk32" for hierarchy "Generate_Arbitrary_Divided_Clk32:Generate_LCD_scope_Clk"
 Info (12128): Elaborating entity "var_clk_div32" for hierarchy "Generate_Arbitrary_Divided_Clk32:Generate_LCD_scope_Clk|var_clk_div32:Div_Clk"
 Warning (12125): Using design file scope_capture.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: scope_capture
 Info (12128): Elaborating entity "scope_capture" for hierarchy "scope_capture:LCD_scope_channelA"
-Warning (12125): Using design file lcd_scope_encapsulated_pacoblaze_wrapper.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+Warning (12125): Using design file LCD_Scope_Encapsulated_pacoblaze_wrapper.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: LCD_Scope_Encapsulated_pacoblaze_wrapper
 Info (12128): Elaborating entity "LCD_Scope_Encapsulated_pacoblaze_wrapper" for hierarchy "LCD_Scope_Encapsulated_pacoblaze_wrapper:LCD_LED_scope"
 Info (12128): Elaborating entity "LCD_Scope_Encapsulated_pacoblaze" for hierarchy "LCD_Scope_Encapsulated_pacoblaze_wrapper:LCD_LED_scope|LCD_Scope_Encapsulated_pacoblaze:LCD_Scope_Encapsulated_pacoblaze_inst"
@@ -4240,16 +4240,16 @@ Warning (21074): Design contains 6 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[6]"
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "AUD_ADCDAT"
-Info (21057): Implemented 6900 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 6901 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 56 output pins
     Info (21060): Implemented 76 bidirectional pins
-    Info (21061): Implemented 6440 logic cells
+    Info (21061): Implemented 6441 logic cells
     Info (21064): Implemented 308 RAM segments
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 125 warnings
-    Info: Peak virtual memory: 813 megabytes
-    Info: Processing ended: Thu Sep 14 13:27:47 2017
-    Info: Elapsed time: 00:00:32
-    Info: Total CPU time (on all processors): 00:00:57
+    Info: Peak virtual memory: 1102 megabytes
+    Info: Processing ended: Thu Sep 14 23:03:14 2017
+    Info: Elapsed time: 00:00:29
+    Info: Total CPU time (on all processors): 00:00:34
 
 

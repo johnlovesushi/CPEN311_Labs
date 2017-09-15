@@ -1,5 +1,5 @@
 --lpm_mux CASCADE_CHAIN="MANUAL" DEVICE_FAMILY="Cyclone V" IGNORE_CASCADE_BUFFERS="OFF" LPM_SIZE=2 LPM_WIDTH=15 LPM_WIDTHS=1 data result sel
---VERSION_BEGIN 14.1 cbx_lpm_mux 2014:12:03:18:04:04:SJ cbx_mgl 2014:12:03:18:06:09:SJ  VERSION_END
+--VERSION_BEGIN 14.1 cbx_lpm_mux 2014:12:03:18:16:05:SJ cbx_mgl 2014:12:03:20:51:57:SJ  VERSION_END
 
 
 -- Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
