@@ -1,4 +1,4 @@
-<session jtag_chain="DE-SoC [USB-1]" jtag_device="@2: 5CSE(BA5|MA5)/5CSTFD5D5/.. (0x02D120DD)" sof_file="../Basic_Organ_Solution.sof">
+<session jtag_chain="DE-SoC [1-4]" jtag_device="@2: 5CSE(BA5|MA5)/5CSTFD5D5/.. (0x02D120DD)" sof_file="../Basic_Organ_Solution.sof">
   <display_tree gui_logging_enabled="0">
     <display_branch instance="auto_signaltap_0" log="USE_GLOBAL_TEMP" signal_set="USE_GLOBAL_TEMP" trigger="USE_GLOBAL_TEMP"/>
   </display_tree>

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--Created by Liquid XML 2008 (www.liquid-technologies.com) for Altera-->
+<ProgramExecution xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	<QuartusExecution>
+		<AddressBits>64</AddressBits>
+		<ApplicationError>
+		<Bits>64</Bits>
+		<CommandLine>quartus</CommandLine>
+		<ErrorMessage>Segment Violation at (nil)</ErrorMessage>
+		<Line>0</Line>
+		<Platform>linux</Platform>
+		<SourceFile>unknown</SourceFile>
+		<StackTrace>
+	0x7fa50cd0f6f8: c.so.6 + 0x6e6f8 (fwrite + 0x18)
+	0x7fa50c1c505b: curl.so.4 + 0x1205b (showit + 0x5b)
+	0x7fa50c1c5388: curl.so.4 + 0x12388 (Curl_debug + 0xe8)
+	0x7fa50c1c55ff: curl.so.4 + 0x125ff (Curl_failf + 0xdf)
+	0x7fa50c1bc10f: curl.so.4 + 0x910f (Curl_resolv_timeout + 0x12f)
+		</StackTrace>
+		<Subsystem>unknown</Subsystem>
+	</ApplicationError>
+	<Compilation>
+			<CompileID>0</CompileID>
+			<DeviceFamily/>
+			<IncrementalCompilation/>
+			<TopLevelEntityName/>
+		</Compilation>
+		<DateInvoked>2017/09/17 15:54:18</DateInvoked>
+		<ElapsedTime>324</ElapsedTime>
+		<IP>127.0.1.1</IP>
+		<IsInternal>false</IsInternal>
+		<IsQt>true</IsQt>
+		<License>
+			<Edition>Web Edition</Edition>
+			<LicenseHostID/>
+		</License>
+		<Machine>
+			<CPUCountLogical>2</CPUCountLogical>
+			<CPUCountPhysical>1</CPUCountPhysical>
+			<CPUSpeed>100</CPUSpeed>
+			<Hostname>ubuntu</Hostname>
+			<NIC>
+				<Address>001c4238cef1</Address>
+			</NIC>
+			<OS>Ubuntu 16.04.2</OS>
+			<OSAddressBits>64</OSAddressBits>
+			<OSVersion>16</OSVersion>
+			<Platform>linux</Platform>
+			<ScreenResolution>unknown</ScreenResolution>
+			<TotalPhysicalRAM>988</TotalPhysicalRAM>
+			<TotalVirtualRAM>65535</TotalVirtualRAM>
+		</Machine>
+		<Name>quartus</Name>
+		<PeakMemoryUsed>0</PeakMemoryUsed>
+		<ProjectRevision>
+			<ProjectName/>
+			<Revision/>
+		</ProjectRevision>
+		<QuartusInstallation>
+			<InstallationID>0.150518382210655</InstallationID>
+			<Version>
+				<Build>186</Build>
+				<BuildSite>SJ</BuildSite>
+				<BuildSuffix/>
+				<Edition>Web Edition</Edition>
+				<ServicePack>0</ServicePack>
+				<VersionNumber>14.1</VersionNumber>
+			</Version>
+		</QuartusInstallation>
+		<QuartusUser>
+			<AlteraUserName/>
+			<FAEContactName/>
+			<TalkbackStatus>
+				<DateSet/>
+				<TalkbackOn>true</TalkbackOn>
+			</TalkbackStatus>
+			<UserID>0.150519380217065</UserID>
+			<UserName>parallels</UserName>
+		</QuartusUser>
+	</QuartusExecution>
+	<SchemaVersion>schema_2013-01-18</SchemaVersion>
+</ProgramExecution>
+

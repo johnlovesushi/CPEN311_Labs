@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "linux64",
+		"os_name" : "Ubuntu 16.04.2",
+		"os_version" : "16"
+	},
+	"error" : {
+		"executable" : "quartus",
+		"comment" : "quartus was sitting in idel. and it just quitted itself",
+		"error_message" : "Segment Violation at 0xffffffffffffffff",
+		"source_file" : "unknown",
+		"line" : "0",
+		"stack_trace" : "\t0x7f3476ff34ed: curl.so.4 + 0x214ed (addbyter + 0xd)\n\t0x7f3476ff4403: curl.so.4 + 0x22403 (dprintf_formatf + 0xd33)\n\t0x7f3476ff4a45: curl.so.4 + 0x22a45 (curl_mvsnprintf + 0x25)\n\t0x7f3476ff36c2: curl.so.4 + 0x216c2 (curl_msnprintf + 0x82)\n\t0x7f3476fe4646: curl.so.4 + 0x12646 (Curl_failf + 0x126)\n\t0x7f3476fdb10f: curl.so.4 + 0x910f (Curl_resolv_timeout + 0x12f)\n",
+		"subsystem" : "unknown"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "14.1.0",
+		"build" : "186",
+		"edition" : "Web Edition"
+	}
+}
