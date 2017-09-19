@@ -192,19 +192,83 @@ parameter character_space=8'h20;           //' '
 parameter character_exclaim=8'h21;          //'!'
 
 
-wire Clock_1KHz, Clock_1Hz;
+wire Clock_1KHz, Clock_1Hz, Clock_1Hz_LED;
 wire Sample_Clk_Signal;
-wire [31:0] note;
+wire [31:0] note_count;
 //=======================================================================================================================
 //
 // Insert your code for Lab1 here!
 //
 //
-SW_CONFIG(.sw0(SW[0]),.sw1(SW[1]),.sw2(SW[2]),.sw3(SW[3]),.out(note));
+//Generate note DO RE MI ...
+SW_CONFIG gen_note_count (.sw0(SW[0]), .sw1(SW[1]),.sw2(SW[2]),.sw3(SW[3]),.out(note_count));
 
-            
+wire Note_frequency;
 
-assign Sample_Clk_Signal = Clock_1KHz;
+Generate_Arbitrary_Divided_Clk32  //Generate Clock for different notes
+Gen_Note_clk
+(
+.inclk(CLK_50M),
+.outclk(Note_frequency),
+.outclk_Not(),
+.div_clk_count(note_count), //count for different notes
+.Reset(1'h1)); 
+
+  
+//LED per sec
+Generate_Arbitrary_Divided_Clk32 //Generate 1 Hz Clock - 1s
+Gen_1Hz_clk
+(
+.inclk(CLK_50M),
+.outclk(Clock_1Hz_LED),
+.outclk_Not(),
+.div_clk_count(32'h17D7070), //frequency count for 1Hz
+.Reset(1'h1)); 
+
+LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[7:0]));
+
+//==============================================================================
+//
+//ScopeInfoA display note & ScopeInfoB display note generate
+//
+//
+//==============================================================================
+//The LCD scope and display
+
+logic [31:0] scopeInfoA_note;
+logic [31:0] scopeInfoB_note;
+  always @(*)
+    case({SW[3],SW[2],SW[1],SW[0]})
+      4'b0001:	scopeInfoA_note={character_D,character_lowercase_o};
+      4'b0011:	scopeInfoA_note={character_R,character_lowercase_e};
+      4'b0101:	scopeInfoA_note={character_M,character_lowercase_i};
+      4'b0111:	scopeInfoA_note={character_F,character_lowercase_a};
+      4'b1001:	scopeInfoA_note={character_S,character_lowercase_o};
+      4'b1011:	scopeInfoA_note={character_L,character_lowercase_a};
+      4'b1101:	scopeInfoA_note={character_S,character_lowercase_i};
+      4'b1111:	scopeInfoA_note={character_D,character_lowercase_o,character_2};
+      default:scopeInfoA_note={character_I,character_D,character_K};
+    endcase
+        
+//==============================================================================
+//==============================================================================
+  always @(*)
+    case(SW[3:0])
+      4'b0001:scopeInfoB_note={character_S,character_W,character_0}; //SW0
+      4'b0011:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_1}; //SW0 SW1
+      4'b0101:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_2}; //SW0 SW2
+      4'b0111:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_1,character_space,character_S,character_W,character_2}; //SW0 SW1 SW2
+  		4'b1001:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_3}; //SW0 SW3
+      4'b1011:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_1,character_space,character_S,character_W,character_3}; //SW0 SW1 SW3
+		4'b1101:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_2,character_space,character_S,character_W,character_3}; //SW0 SW2 SW3
+      4'b1111:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_1,character_space,character_S,character_W,character_2,character_space,character_S,character_W,character_3}; //SW0 SW1 SW2 SW3
+      default:scopeInfoB_note={character_N,character_divide,character_A};
+    endcase
+//==============================================================================
+  
+
+
+assign Sample_Clk_Signal = SW[0]? Note_frequency: 0;
 
 //Audio Generation Signal
 //Note that the audio needs signed data - so convert 1 bit to 8 bits signed
@@ -267,6 +331,7 @@ scope_capture LCD_scope_channelB
 .reset(1'b1));
 
 assign LCD_ON   = 1'b1;
+
 //The LCD scope and display
 LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
                         //LCD control signals
@@ -277,14 +342,16 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
                     .clk(CLK_50M),  //don't touch
                           
                         //LCD Display values
-                      .InH(8'hAA),
-                      .InG(8'hBB),
-                      .InF(8'h01),
-                       .InE(8'h23),
-                      .InD(8'h45),
-                      .InC(8'h67),
-                      .InB(8'h89),
-                     .InA(8'h00),
+                      //.InH(8'hAA),
+                      //.InG(8'hBB),
+                      .InH(0),
+  							 .InG(0),
+							 .InF(0),
+                      .InE(0),
+                      .InD(note_count[31:24]),
+                      .InC(note_count[23:16]),
+                      .InB(note_count[15:8]),
+                      .InA(note_count[7:0]),
                           
                      //LCD display information signals
                          .InfoH({character_A,character_U}),
@@ -304,8 +371,9 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
                           .scope_channelB(scope_channelB), //don't touch
                           
                   //scope information generation
-                          .ScopeInfoA({character_1,character_K,character_H,character_lowercase_z}),
-                          .ScopeInfoB({character_S,character_W,character_1,character_space}),
+  												.ScopeInfoA(scopeInfoA_note),  //scopeInfoA displays {"Do", "Re", "Mi",
+                                                         //	"Fa", "So", "La" "Si", "DO2"}
+                          .ScopeInfoB(scopeInfoB_note),
                           
                  //enable_scope is used to freeze the scope just before capturing 
                  //the waveform for display (otherwise the sampling would be unreliable)
@@ -329,7 +397,7 @@ Gen_1KHz_clk
 .inclk(CLK_50M),
 .outclk(Clock_1KHz),
 .outclk_Not(),
-.div_clk_count(note), //change this if necessary to suit your module
+.div_clk_count(32'h61A6), //change this if necessary to suit your module
 .Reset(1'h1)); 
 
 wire speed_up_raw;
