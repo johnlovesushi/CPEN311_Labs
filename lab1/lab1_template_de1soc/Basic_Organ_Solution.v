@@ -205,25 +205,25 @@ SW_CONFIG gen_note_count (.sw0(SW[0]), .sw1(SW[1]),.sw2(SW[2]),.sw3(SW[3]),.out(
 
 wire Note_frequency;
 
-Generate_Arbitrary_Divided_Clk32  //Generate Clock for different notes
+Clock_Divider  //Generate Clock for different notes
 Gen_Note_clk
 (
 .inclk(CLK_50M),
 .outclk(Note_frequency),
 .outclk_Not(),
 .div_clk_count(note_count), //count for different notes
-.Reset(1'h1)); 
+.Reset(1'h0)); 
 
   
 //LED per sec
-Generate_Arbitrary_Divided_Clk32 //Generate 1 Hz Clock - 1s
+Clock_Divider //Generate 1 Hz Clock - 1s
 Gen_1Hz_clk
 (
 .inclk(CLK_50M),
 .outclk(Clock_1Hz_LED),
 .outclk_Not(),
 .div_clk_count(32'h17D7070), //frequency count for 1Hz
-.Reset(1'h1)); 
+.Reset(1'h0)); 
 
 LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[7:0]));
 
@@ -255,13 +255,13 @@ logic [31:0] scopeInfoB_note;
   always @(*)
     case(SW[3:0])
       4'b0001:scopeInfoB_note={character_S,character_W,character_0}; //SW0
-      4'b0011:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_1}; //SW0 SW1
-      4'b0101:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_2}; //SW0 SW2
-      4'b0111:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_1,character_space,character_S,character_W,character_2}; //SW0 SW1 SW2
-  		4'b1001:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_3}; //SW0 SW3
-      4'b1011:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_1,character_space,character_S,character_W,character_3}; //SW0 SW1 SW3
-		4'b1101:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_2,character_space,character_S,character_W,character_3}; //SW0 SW2 SW3
-      4'b1111:scopeInfoB_note={character_S,character_W,character_0,character_space,character_S,character_W,character_1,character_space,character_S,character_W,character_2,character_space,character_S,character_W,character_3}; //SW0 SW1 SW2 SW3
+      4'b0011:scopeInfoB_note={character_S,character_W,character_0,character_1}; //SW0 SW1
+      4'b0101:scopeInfoB_note={character_S,character_W,character_0,character_2}; //SW0 SW2
+      4'b0111:scopeInfoB_note={character_S,character_W,character_0,character_1,character_2}; //SW0 SW1 SW2
+  		4'b1001:scopeInfoB_note={character_S,character_W,character_0,character_3}; //SW0 SW3
+      4'b1011:scopeInfoB_note={character_S,character_W,character_0,character_1,character_3}; //SW0 SW1 SW3
+		4'b1101:scopeInfoB_note={character_S,character_W,character_0,character_2,character_3}; //SW0 SW2 SW3
+      4'b1111:scopeInfoB_note={character_S,character_W,character_0,character_1,character_2,character_3}; //SW0 SW1 SW2 SW3
       default:scopeInfoB_note={character_N,character_divide,character_A};
     endcase
 //==============================================================================
@@ -342,8 +342,6 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
                     .clk(CLK_50M),  //don't touch
                           
                         //LCD Display values
-                      //.InH(8'hAA),
-                      //.InG(8'hBB),
                       .InH(0),
   							 .InG(0),
 							 .InF(0),
@@ -354,14 +352,14 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
                       .InA(note_count[7:0]),
                           
                      //LCD display information signals
-                         .InfoH({character_A,character_U}),
-                          .InfoG({character_S,character_W}),
-                          .InfoF({character_space,character_A}),
-                          .InfoE({character_N,character_space}),
-                          .InfoD({character_E,character_X}),
-                          .InfoC({character_A,character_M}),
-                          .InfoB({character_P,character_L}),
-                          .InfoA({character_E,character_exclaim}),
+                          .InfoH({character_K,character_lowercase_a}),
+                          .InfoG({character_lowercase_y,character_space}),
+                          .InfoF({character_plus,character_space}),
+                          .InfoE({character_J,character_lowercase_o}),
+                          .InfoD({character_lowercase_h,character_lowercase_n}),
+                          .InfoC({character_space,character_L}),
+                          .InfoB({character_lowercase_a,character_lowercase_b}),
+                          .InfoA({character_1,character_space}),
                           
                   //choose to display the values or the oscilloscope
                           .choose_scope_or_LCD(choose_LCD_or_SCOPE),
