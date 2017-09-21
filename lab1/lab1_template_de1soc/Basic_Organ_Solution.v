@@ -342,14 +342,14 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
                     .clk(CLK_50M),  //don't touch
                           
                         //LCD Display values
-                      .InH(0),
-  							 .InG(0),
-							 .InF(0),
-                      .InE(0),
-                      .InD(note_count[31:24]),
-                      .InC(note_count[23:16]),
-                      .InB(note_count[15:8]),
-                      .InA(note_count[7:0]),
+                      .InH(audio_data),	//audio data
+  							 .InG(SW[7:0]),	//SW position
+							 .InF(8'h01),
+                      .InE(8'h23),
+                      .InD(8'h45),
+                      .InC(8'h67),
+                      .InB(8'h89),
+                      .InA(8'h00),
                           
                      //LCD display information signals
                           .InfoH({character_K,character_lowercase_a}),
