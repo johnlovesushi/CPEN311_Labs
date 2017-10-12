@@ -215,41 +215,105 @@ parameter character_space=8'h20;           //' '
 parameter character_exclaim=8'h21;          //'!'
 
 
-wire Clock_1KHz, Clock_1Hz;
+wire Clock_1KHz, Clock_1Hz, Clock_22K, Clock_22K_Sync;
 wire Sample_Clk_Signal;
-
+wire [31:0] Count_22 = 32'h470;	//calculated value for 22K clock count
 //=======================================================================================================================
 //
 // Insert your code for Lab2 here!
 //
 //
-//=============================================================
+//generating 22kHz clk
+Gen_Note_clk
+(
+.inclk(CLK_50M),
+.outclk(Clock_22K),
+.outclk_Not(),
+.div_clk_count(Count_22),
+.Reset(1'h0)); 
+  
+//LED per sec
+Clock_Divider //Generate 1 Hz Clock - 1s
+Gen_1Hz_clk
+(
+.inclk(CLK_50M),
+.outclk(Clock_1Hz_LED),
+.outclk_Not(),
+.div_clk_count(32'h17D7070), //frequency count for 1Hz
+.Reset(1'h0)); 
+
+//LED Display from Lab1
+LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[7:0]));
+
+//Sync two clks, Clock_22K_Sync is syncronous with CLK_50
+Edge_Detect sync_clk (.CLK50(CLK_50M), .CLK_22(Clock_22K), .clk(Clock_22K_Sync))
+
+//State Machine for Address Control
+//==============================================================================
+//TODO: CHANGE parameter type to enumerated type  
+parameter Idle_Forward  	5'b000_11; //address_ctrl == 11: reset address to 0
+parameter Idle_Backward 	5'b001_00; //address_ctrl == 00:address does not change
+parameter Start_Forward		5'b010_01; //address_ctrl == 01:address increases
+parameter Start_Backward   5'b011_10; //address_ctrl == 10:address decreases
+parameter Pause_Forward    5'b100_00;
+parameter Pause_Backward   5'b101_00;
+
+wire [4:0] state;
+wire [1:0] address_ctrl = state[1:0];
+
+always_ff @ (posedge CLK_50M)
+begin
+	if (kbd_received_ascii_code == character_R)
+      state = Idle_Forward;	//Idle_Forward is the reset state
+  	else begin
+    	case (state)
+        Idle_Forward:  if (kbd_received_ascii_code == character_E) state = Start_Forward;
+        							 else if (kbd_received_ascii_code == character_B) state = Idle_Backward;
+        Idle_Backward: if (kbd_received_ascii_code == character_E) state = Start_Backward;
+                       else if (kbd_received_ascii_code == character_F) state = Idle_Forward;
+        Start_Forward: if (kbd_received_ascii_code == character_B) state = Start_Backward;
+        							 else if (kbd_received_ascii_code == character_D) state = Pause_Forward;
+        Start_Backward:if (kbd_received_ascii_code == character_F) state = Start_Forward;
+        							 else if (kbd_received_ascii_code == character_D) state = Pause_Backward;
+        Pause_Forward: if (kbd_received_ascii_code == character_E) state = Start_Forward;
+       								 else if (kbd_received_ascii_code == character_B) state = Pause_Backward;
+      	Pause_Backward:if (kbd_received_ascii_code == character_E) state = Start_Backward;
+                       else if (kbd_received_ascii_code == character_F) state = Pause_Forward;
+        default: state = Idle_Forward;
+      endcase
+  	end
+end
+//=============================================================================
 //
 //FSM
 //
 //
 //===================================================
-module FSM(clk,in,out);
+  module FSM(
+              .clk(Clock_22K_Sync),
+              .in(address_ctrl),
+    					.out({flash_mem_read,flash_mem_address,flash_mem_byteenable}),
+  						);
 
 
-wire            flash_mem_read;
-wire            flash_mem_waitrequest;
-wire    [22:0]  flash_mem_address;
-wire    [31:0]  flash_mem_readdata;
-wire            flash_mem_readdatavalid;
-wire    [3:0]   flash_mem_byteenable;
-
+  wire            flash_mem_read;           // input signal 
+  wire            flash_mem_waitrequest;    //output signal
+  wire    [22:0]  flash_mem_address;        // input signal
+  wire    [31:0]  flash_mem_readdata;       //output signal
+  wire            flash_mem_readdatavalid;  //output signal
+  wire    [3:0]   flash_mem_byteenable;     // input signal
+ 
 
 
 flash flash_inst (
     .clk_clk                 (CLK_50M),
-    .reset_reset_n           (1'b1),
-    .flash_mem_write         (1'b0),
-    .flash_mem_burstcount    (6'b000001),
+    .reset_reset_n           (1'b1),               // need to revise
+    .flash_mem_write         (1'b0),               // no need to touch
+    .flash_mem_burstcount    (6'b000001),          // no need to touch
     .flash_mem_waitrequest   (flash_mem_waitrequest),
     .flash_mem_read          (flash_mem_read),
     .flash_mem_address       (flash_mem_address),
-    .flash_mem_writedata     (32'b0),
+    .flash_mem_writedata     (32'b0),             // no need to touch
     .flash_mem_readdata      (flash_mem_readdata),
     .flash_mem_readdatavalid (flash_mem_readdatavalid),
     .flash_mem_byteenable    (flash_mem_byteenable)
@@ -296,7 +360,7 @@ Kbd_ctrl Kbd_Controller(
 */
 .kbd_clk(ps2c), 
 .kbd_data(ps2d),
- .clk(CLK_50M), 
+.clk(CLK_50M), 
 .scan_code(kbd_scan_code), 
 .reset_kbd_reg(~reset_kbd_data), 
 .data_ready(kbd_data_ready)
@@ -306,7 +370,7 @@ key2ascii kbd2ascii(
 /*
  * the module is used to convert keyboard information to ascii_code
  * input: kbd_scan_code, clk
- * output: kbd_scan_code will be the input into Write_Kbd_To_Scope_LCD as input conver to scope_info
+ * output: kbd_received_ascii_code will be the input into Write_Kbd_To_Scope_LCD as input conver to scope_info
  */
 .key_code(kbd_scan_code),
 .ascii_code(kbd_received_ascii_code),
