@@ -215,86 +215,56 @@ parameter character_space=8'h20;           //' '
 parameter character_exclaim=8'h21;          //'!'
 
 
-wire Clock_1KHz, Clock_1Hz, Clock_22K, Clock_22K_Sync;
+wire Clock_1KHz, Clock_1Hz, Clock_22K, Clock_22K_Sync, Clock_1Hz_LED;
 wire Sample_Clk_Signal;
-wire [31:0] Count_22 = 32'h470;	//calculated value for 22K clock count
+wire [31:0] Count_22;	//calculated value for 22K clock count
+wire [1:0] address_ctrl;
 //=======================================================================================================================
 //
 // Insert your code for Lab2 here!
 //
-//
+//speed controler based on speed_up_event, speed_down_event and speed_reset_event to dicide the value of count_22
+Speed_Control(
+					.speed_up(speed_up_event), 
+					.speed_down(speed_down_event), 
+					.speed_reset(speed_reset_event), 
+					.count(Count_22), 
+					.clk(CLK_50M)
+					);
 //generating 22kHz clk
-Gen_Note_clk
-(
-.inclk(CLK_50M),
-.outclk(Clock_22K),
-.outclk_Not(),
-.div_clk_count(Count_22),
-.Reset(1'h0)); 
+Clock_Divider Gen_Note_clk(
+									.inclk(CLK_50M),
+									.outclk(Clock_22K),
+									.outclk_Not(),
+									.div_clk_count(Count_22),
+									.Reset(1'h0)
+									); 
   
 //LED per sec
-Clock_Divider //Generate 1 Hz Clock - 1s
-Gen_1Hz_clk
-(
-.inclk(CLK_50M),
-.outclk(Clock_1Hz_LED),
-.outclk_Not(),
-.div_clk_count(32'h17D7070), //frequency count for 1Hz
-.Reset(1'h0)); 
+Clock_Divider Gen_1Hz_clk( //Generate 1 Hz Clock - 1s
+									.inclk(CLK_50M),
+									.outclk(Clock_1Hz_LED),
+									.outclk_Not(),
+									.div_clk_count(32'h17D7070), //frequency count for 1Hz
+									.Reset(1'h0)
+									); 
 
 //LED Display from Lab1
 LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[7:0]));
 
 //Sync two clks, Clock_22K_Sync is syncronous with CLK_50
-Edge_Detect sync_clk (.CLK50(CLK_50M), .CLK_22(Clock_22K), .clk(Clock_22K_Sync))
+Edge_Detect sync_clk (.CLK_50(CLK_50M), .CLK_22(Clock_22K), .clk(Clock_22K_Sync));
 
 //State Machine for Address Control
-//==============================================================================
-//TODO: CHANGE parameter type to enumerated type  
-parameter Idle_Forward  	5'b000_11; //address_ctrl == 11: reset address to 0
-parameter Idle_Backward 	5'b001_00; //address_ctrl == 00:address does not change
-parameter Start_Forward		5'b010_01; //address_ctrl == 01:address increases
-parameter Start_Backward   5'b011_10; //address_ctrl == 10:address decreases
-parameter Pause_Forward    5'b100_00;
-parameter Pause_Backward   5'b101_00;
-
-wire [4:0] state;
-wire [1:0] address_ctrl = state[1:0];
-
-always_ff @ (posedge CLK_50M)
-begin
-	if (kbd_received_ascii_code == character_R)
-      state = Idle_Forward;	//Idle_Forward is the reset state
-  	else begin
-    	case (state)
-        Idle_Forward:  if (kbd_received_ascii_code == character_E) state = Start_Forward;
-        							 else if (kbd_received_ascii_code == character_B) state = Idle_Backward;
-        Idle_Backward: if (kbd_received_ascii_code == character_E) state = Start_Backward;
-                       else if (kbd_received_ascii_code == character_F) state = Idle_Forward;
-        Start_Forward: if (kbd_received_ascii_code == character_B) state = Start_Backward;
-        							 else if (kbd_received_ascii_code == character_D) state = Pause_Forward;
-        Start_Backward:if (kbd_received_ascii_code == character_F) state = Start_Forward;
-        							 else if (kbd_received_ascii_code == character_D) state = Pause_Backward;
-        Pause_Forward: if (kbd_received_ascii_code == character_E) state = Start_Forward;
-       								 else if (kbd_received_ascii_code == character_B) state = Pause_Backward;
-      	Pause_Backward:if (kbd_received_ascii_code == character_E) state = Start_Backward;
-                       else if (kbd_received_ascii_code == character_F) state = Pause_Forward;
-        default: state = Idle_Forward;
-      endcase
-  	end
-end
+Address_Ctrl (.CLK_50M(CLK_50M), 
+				  .kbd_received_ascii_code(kbd_received_ascii_code), 
+				  .address_ctrl(address_ctrl));
 //=============================================================================
 //
 //FSM
 //
 //
 //===================================================
-  module FSM(
-              .clk(Clock_22K_Sync),
-              .in(address_ctrl),
-    					.out({flash_mem_read,flash_mem_address,flash_mem_byteenable}),
-  						);
-
 
   wire            flash_mem_read;           // input signal 
   wire            flash_mem_waitrequest;    //output signal
@@ -303,7 +273,14 @@ end
   wire            flash_mem_readdatavalid;  //output signal
   wire    [3:0]   flash_mem_byteenable;     // input signal
  
-
+  wire ready_to_read;
+  wire startFlash;
+  Flash_Read flash_read(.start(startFlash), 
+								.read(flash_mem_read),
+								.flash_mem_waitrequest(flash_mem_waitrequest), 
+								.data_valid(flash_mem_readdatavalid), 
+								.clk(CLK_50M),
+								.finish(ready_to_read));
 
 flash flash_inst (
     .clk_clk                 (CLK_50M),
@@ -318,13 +295,23 @@ flash flash_inst (
     .flash_mem_readdatavalid (flash_mem_readdatavalid),
     .flash_mem_byteenable    (flash_mem_byteenable)
 );
-            
+
+Address_processing addrToAudio (.clk_50MHz(CLK_50M),
+										 .clk_22(Clock_22K_Sync),
+										 .ready_to_read(ready_to_read),
+										 .address_ctrl(address_ctrl),
+										 .Song_Data(flash_mem_readdata),	//flash_mem_readdata
+										 .startFlash(startFlash),
+										 .read(flash_mem_read),
+										 .byteenable(flash_mem_byteenable),
+										 .audio_data(audio_data),
+										 .address(flash_mem_address));
 
 assign Sample_Clk_Signal = Clock_1KHz;
 
 //Audio Generation Signal
 //Note that the audio needs signed data - so convert 1 bit to 8 bits signed
-wire [7:0] audio_data = {~Sample_Clk_Signal,{7{Sample_Clk_Signal}}}; //generate signed sample audio signal
+wire [15:0] audio_data; //= {~Sample_Clk_Signal,{7{Sample_Clk_Signal}}}; //generate signed sample audio signal
 
 
 
@@ -478,8 +465,8 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
 					    .clk(CLK_50M),
                 
                         //LCD Display values
-                      .InH(8'hAA),
-                      .InG(8'hBB),
+                      .InH({6'b0,address_ctrl}),//(8'hAA),
+                      .InG/*(flash_mem_address[7:0]),*/(8'hBB),
                       .InF(8'h01),
                        .InE(8'h23),
                       .InD(8'h45),
@@ -726,8 +713,8 @@ audio_control(
   .oAUD_DACDAT(AUD_DACDAT),                 //  Audio CODEC DAC Data
   .AUD_BCLK(AUD_BCLK),                      //  Audio CODEC Bit-Stream Clock
   .oAUD_XCK(AUD_XCK),                       //  Audio CODEC Chip Clock
-  .audio_outL({actual_audio_data_left,8'b1}), 
-  .audio_outR({actual_audio_data_right,8'b1}),
+  .audio_outL({actual_audio_data_left/*,8'b1*/}), 
+  .audio_outR({actual_audio_data_right/*,8'b1*/}),
   .audio_right_clock(audio_right_clock), 
   .audio_left_clock(audio_left_clock)
 );
