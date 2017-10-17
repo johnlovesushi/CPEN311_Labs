@@ -1,6 +1,6 @@
 `default_nettype none
 module simple_ipod_solution(
-
+sssss
     //////////// CLOCK //////////
     CLOCK_50,
 
@@ -9,7 +9,7 @@ module simple_ipod_solution(
 
     //////////// KEY //////////
     KEY,
-
+rddd
     //////////// SW //////////
     SW,
 
@@ -218,7 +218,6 @@ parameter character_exclaim=8'h21;          //'!'
 wire Clock_1KHz, Clock_1Hz, Clock_22K, Clock_22K_Sync, Clock_1Hz_LED;
 wire Sample_Clk_Signal;
 wire [31:0] Count_22;	//calculated value for 22K clock count
-wire [1:0] address_ctrl;
 //=======================================================================================================================
 //
 // Insert your code for Lab2 here!
@@ -256,15 +255,38 @@ LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[7:0]));
 Edge_Detect sync_clk (.CLK_50(CLK_50M), .CLK_22(Clock_22K), .clk(Clock_22K_Sync));
 
 //State Machine for Address Control
+  
+wire dir,reset,play; // output from Address_Ctrl and will be the input to the address_processing_FSM
+  
+//from Address_Ctrl.sv
 Address_Ctrl (.CLK_50M(CLK_50M), 
-				  .kbd_received_ascii_code(kbd_received_ascii_code), 
-				  .address_ctrl(address_ctrl));
+				  		.kbd_received_ascii_code(kbd_received_ascii_code), 
+              .dir(dir),
+              .reset(reset),
+              .play(play));
 //=============================================================================
 //
 //FSM
 //
 //
 //===================================================
+  //input clk
+  wire change_addr; //signal from fsm_audio_processing.sv
+  //wire [31:0] addr; // address for falsh_me
+  Address_Processing address_fsm( .dir(dir), 
+                                  .play(play), 
+                                 .rst(reset),
+                                 .ready_to_read(ready_to_read),
+                                 .change_addr(change_addr), 
+                                .addr(flash_mem_address), 
+                                 .flash_read_check_signal(startFlash)
+                                );
+  
+  FSM_Audio_Processing fsm_audio_processing( .edge_clk(Clock_22K_Sync),
+                                             .flash_mem_readdata(flash_mem_readdata),
+                                             .change_addr()change_addr,  
+                                             .audio_signal(audio_data) );
+	
 
   wire            flash_mem_read;           // input signal 
   wire            flash_mem_waitrequest;    //output signal
@@ -273,14 +295,27 @@ Address_Ctrl (.CLK_50M(CLK_50M),
   wire            flash_mem_readdatavalid;  //output signal
   wire    [3:0]   flash_mem_byteenable;     // input signal
  
+  
+  // 
+
+  //==========================================================
+  /*
+   *Flash_Read.sv is used to determine whether the flash_mem_controller is ready to read data,
+   *It receives an input as "startFalsh" from the output of Address_processing.sv, and output a finished signal 
+   *to determine whether the flash_mem_controller is ready to handle the signal and be read data from it
+   *
+   */
+  //============================================================
   wire ready_to_read;
   wire startFlash;
   Flash_Read flash_read(.start(startFlash), 
 								.read(flash_mem_read),
-								.flash_mem_waitrequest(flash_mem_waitrequest), 
 								.data_valid(flash_mem_readdatavalid), 
 								.clk(CLK_50M),
 								.finish(ready_to_read));
+  
+  
+  
 
 flash flash_inst (
     .clk_clk                 (CLK_50M),
@@ -295,7 +330,7 @@ flash flash_inst (
     .flash_mem_readdatavalid (flash_mem_readdatavalid),
     .flash_mem_byteenable    (flash_mem_byteenable)
 );
-
+/*
 Address_processing addrToAudio (.clk_50MHz(CLK_50M),
 										 .clk_22(Clock_22K_Sync),
 										 .ready_to_read(ready_to_read),
@@ -306,7 +341,7 @@ Address_processing addrToAudio (.clk_50MHz(CLK_50M),
 										 .byteenable(flash_mem_byteenable),
 										 .audio_data(audio_data),
 										 .address(flash_mem_address));
-
+*/
 assign Sample_Clk_Signal = Clock_1KHz;
 
 //Audio Generation Signal
