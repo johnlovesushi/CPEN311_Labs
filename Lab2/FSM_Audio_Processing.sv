@@ -25,18 +25,18 @@ module FSM_Audio_Processing(input edge_clk,
 	begin
     case(state)
 		  lower_state: 	begin
-						fsm1_nextState <= upper_state;
+						Next_state <= upper_state;
 						audio_signal <= flash_mem_readdata[15:0]; // has problem, remember to check it 
 						change_addr <= 0; // tells address controller to update address if necessary
 						end
 
 		  upper_state:	begin
-						fsm1_nextState <= lower_state;
+						Next_state <= lower_state;
 						audio_signal <= flash_mem_readdata[31:16];
 						change_addr <= 1;
 						end
 
-		  default: 		fsm1_nextState <= lower_state; 
+		  default: 		Next_state <= lower_state; 
 		endcase
 	end
 	

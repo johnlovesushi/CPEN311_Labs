@@ -22,36 +22,43 @@ module Address_Process(input clk, dir, play, rst,ready_to_read,change_addr,
   
   assign flash_read_check_signal = state[0];
   always@ (*) begin
-    if (rst) addr = 0;
-    
-    			state <= idle;
-    else
+    if (rst) begin
+				 addr = 0;
+             state <= idle;
+	 end
+    else begin
       
       	case(state)
         			
           idle: state <= Read_Flash;
-          Read_Flash: if(ready_to_read)
-            							state <= Read_AudioData;
+          Read_Flash: if(ready_to_read)state <= Read_AudioData;
+							 else
+								state <= idle;
           Read_AudioData:
             if(play)  begin//check whether it is pause, if it is pause, the address won't change, 
               if(dir == 1 && change_addr == 1)begin
-                  	if(addr >= 32'h7FFFF)
-														addr <= 32'h0;  
-										else
-														addr <= addr + 1'b1;
-                	end
-              else if (dir == 0 && change_addr == 0)
-                  begin
-                    if(addr <= 32'h0)
-														addr <= 32'h7FFFF;
-										else
-														addr <= addr - 1'b1;
-									end
-              			state <= idle;  // after all conditions, we will move to next satate
-						end
-            else 
-              			state <= Read_AudioData;  // since no address is updated, we keep in Read_AudioData state
+                  	if(addr >= 32'h7FFFF) begin
+									addr <= 32'h0; 
+									state <= idle;  // after all conditions, we will move to next satate
+							end else begin
+									addr <= addr + 1'b1;
+									state <= idle;  // after all conditions, we will move to next satate
+							end
+					end
+               else if (dir == 0 && change_addr == 0) begin
+							if(addr <= 32'h0)begin
+									addr <= 32'h7FFFF;
+									state <= idle;  // after all conditions, we will move to next satate
+							end else begin 
+									addr <= addr - 1'b1;
+									state <= idle;  // after all conditions, we will move to next satate
+							end
+					end
+						        
+				end  
+              			//state <= Read_AudioData;  // since no address is updated, we keep in Read_AudioData state
           	default: state <= idle;
         endcase   
-  end
+	end
+end
 endmodule

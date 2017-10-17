@@ -1,6 +1,5 @@
 `default_nettype none
 module simple_ipod_solution(
-sssss
     //////////// CLOCK //////////
     CLOCK_50,
 
@@ -9,7 +8,6 @@ sssss
 
     //////////// KEY //////////
     KEY,
-rddd
     //////////// SW //////////
     SW,
 
@@ -122,8 +120,8 @@ output                      DRAM_WE_N;
 //  REG/WIRE declarations
 //=======================================================
 // Input and output declarations
-logic CLK_50M;
-logic  [7:0] LED;
+wire CLK_50M; //use to be logic
+wire  [7:0] LED; // use to be logic
 assign CLK_50M =  CLOCK_50;
 assign LEDR[7:0] = LED[7:0];
 
@@ -259,11 +257,11 @@ Edge_Detect sync_clk (.CLK_50(CLK_50M), .CLK_22(Clock_22K), .clk(Clock_22K_Sync)
 wire dir,reset,play; // output from Address_Ctrl and will be the input to the address_processing_FSM
   
 //from Address_Ctrl.sv
-Address_Ctrl (.CLK_50M(CLK_50M), 
-				  		.kbd_received_ascii_code(kbd_received_ascii_code), 
-              .dir(dir),
-              .reset(reset),
-              .play(play));
+Address_Ctrl  address_ctrl(.CLK_50M(CLK_50M), 
+									.kbd_received_ascii_code(kbd_received_ascii_code), 
+									.dir(dir),
+									.rst(reset),
+									.play(play));
 //=============================================================================
 //
 //FSM
@@ -273,7 +271,7 @@ Address_Ctrl (.CLK_50M(CLK_50M),
   //input clk
   wire change_addr; //signal from fsm_audio_processing.sv
   //wire [31:0] addr; // address for falsh_me
-  Address_Processing address_fsm( .dir(dir), 
+  Address_Process address_fsm( .dir(dir), 
                                   .play(play), 
                                  .rst(reset),
                                  .ready_to_read(ready_to_read),
@@ -284,7 +282,7 @@ Address_Ctrl (.CLK_50M(CLK_50M),
   
   FSM_Audio_Processing fsm_audio_processing( .edge_clk(Clock_22K_Sync),
                                              .flash_mem_readdata(flash_mem_readdata),
-                                             .change_addr()change_addr,  
+                                             .change_addr(change_addr),  
                                              .audio_signal(audio_data) );
 	
 
@@ -500,7 +498,7 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
 					    .clk(CLK_50M),
                 
                         //LCD Display values
-                      .InH({6'b0,address_ctrl}),//(8'hAA),
+                      .InH(8'hAA),//(8'hAA),
                       .InG/*(flash_mem_address[7:0]),*/(8'hBB),
                       .InF(8'h01),
                        .InE(8'h23),
@@ -584,7 +582,7 @@ begin
       begin
             if (speed_up_raw)
             begin
-                  speed_up_event_trigger <= 1;          
+                  speed_up_event_trigger <= 1'b1;          
             end 
             
             if (speed_down_raw)
@@ -601,8 +599,8 @@ begin
       end     
 end
 
-wire speed_up_event_trigger;
-wire speed_down_event_trigger;
+logic speed_up_event_trigger;
+logic speed_down_event_trigger;
 
 async_trap_and_reset_gen_1_pulse 
 make_speedup_pulse
