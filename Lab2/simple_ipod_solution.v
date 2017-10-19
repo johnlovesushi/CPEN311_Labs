@@ -121,9 +121,9 @@ output                      DRAM_WE_N;
 //=======================================================
 // Input and output declarations
 wire CLK_50M; //use to be logic
-wire  [7:0] LED; // use to be logic
+wire  [9:0] LED; // use to be logic
 assign CLK_50M =  CLOCK_50;
-assign LEDR[7:0] = LED[7:0];
+assign LEDR[9:0] = LED[9:0];
 
 //Character definitions
 
@@ -215,17 +215,18 @@ parameter character_exclaim=8'h21;          //'!'
 
 wire Clock_1KHz, Clock_1Hz, Clock_22K, Clock_22K_Sync, Clock_1Hz_LED;
 wire Sample_Clk_Signal;
-wire [31:0] Count_22;	//calculated value for 22K clock count
+reg [31:0] Count_music;// = 32'h470;	//default is 22K clock count
+
 //=======================================================================================================================
 //
 // Insert your code for Lab2 here!
 //
-//speed controler based on speed_up_event, speed_down_event and speed_reset_event to dicide the value of count_22
+//speed controler based on speed_up_event, speed_down_event and speed_reset_event to dicide the value of Count_music
 Speed_Control(
 					.speed_up(speed_up_event), 
 					.speed_down(speed_down_event), 
 					.speed_reset(speed_reset_event), 
-					.count(Count_22), 
+					.count(Count_music), 
 					.clk(CLK_50M)
 					);
 //generating 22kHz clk
@@ -233,7 +234,7 @@ Clock_Divider Gen_Note_clk(
 									.inclk(CLK_50M),
 									.outclk(Clock_22K),
 									.outclk_Not(),
-									.div_clk_count(Count_22),
+									.div_clk_count(Count_music),
 									.Reset(1'h0)
 									); 
   
@@ -247,43 +248,55 @@ Clock_Divider Gen_1Hz_clk( //Generate 1 Hz Clock - 1s
 									); 
 
 //LED Display from Lab1
-LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[7:0]));
+LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[9:0]), .lock(SW[9]));
 
 //Sync two clks, Clock_22K_Sync is syncronous with CLK_50
-Edge_Detect sync_clk (.CLK_50(CLK_50M), .CLK_22(Clock_22K), .clk(Clock_22K_Sync));
-
+edge_detect Syncronize_Clocks (.async_sig(Clock_22K), .outclk(CLK_50M), .out_sync_sig(Clock_22K_Sync));
 //State Machine for Address Control
   
-wire dir,reset,play; // output from Address_Ctrl and will be the input to the address_processing_FSM
-  
-//from Address_Ctrl.sv
-Address_Ctrl  address_ctrl(.CLK_50M(CLK_50M), 
-									.kbd_received_ascii_code(kbd_received_ascii_code), 
-									.dir(dir),
-									.rst(reset),
-									.play(play));
+wire dir,reset,play; // output from Address_Ctrl and will be the input to the FSM_slave
+
+Keyboard_Ctrl keyboard_ctrl(.CLK_50M(CLK_50M), 
+									 .kbd_received_ascii_code(kbd_received_ascii_code), 
+									 .dir(dir),
+									 .rst(reset),
+									 .play(play),
+									 .kbd_data_ready(kbd_data_ready),
+									 .read_finish(master_finish),
+									 .lock(SW[9])	//use switch 0 to lock all keyboard inputs
+									 );
 //=============================================================================
 //
-//FSM
+//FSM slave and FSM master module 
 //
 //
 //===================================================
-  //input clk
-  wire change_addr; //signal from fsm_audio_processing.sv
-  //wire [31:0] addr; // address for falsh_me
-  Address_Process address_fsm( .dir(dir), 
-                                  .play(play), 
-                                 .rst(reset),
-                                 .ready_to_read(ready_to_read),
-                                 .change_addr(change_addr), 
-                                .addr(flash_mem_address), 
-                                 .flash_read_check_signal(startFlash)
+  wire slave_finish, master_finish, change_addr, start_slave;
+  wire [31:0] return_data;
+				  
+  FSM_Slave Flash					 ( .clk(CLK_50M),
+											.start(start_slave),
+                                 .ready_to_read(flash_mem_readdatavalid),
+											.flash_data(flash_mem_readdata),
+                                 .read(flash_mem_read),
+											.byteenable(flash_mem_byteenable),
+											.finish(slave_finish),
+											.return_data(return_data),
+											.waitrequest(flash_mem_waitrequest)
                                 );
-  
-  FSM_Audio_Processing fsm_audio_processing( .edge_clk(Clock_22K_Sync),
-                                             .flash_mem_readdata(flash_mem_readdata),
-                                             .change_addr(change_addr),  
-                                             .audio_signal(audio_data) );
+
+  FSM_master Address_ctrl		( .clk(CLK_50M),
+										  .edge_clk(Clock_22K_Sync),
+										  .restart(reset),
+										  .play(play),
+										  .dir(dir),
+                                .flash_mem_data(return_data),
+                                .audio_signal(audio_data),
+										  .finish(master_finish),
+										  .slave_finish(slave_finish),
+										  .slave_start(start_slave),
+										  .addr(flash_mem_address)
+										 );
 	
 
   wire            flash_mem_read;           // input signal 
@@ -304,13 +317,6 @@ Address_Ctrl  address_ctrl(.CLK_50M(CLK_50M),
    *
    */
   //============================================================
-  wire ready_to_read;
-  wire startFlash;
-  Flash_Read flash_read(.start(startFlash), 
-								.read(flash_mem_read),
-								.data_valid(flash_mem_readdatavalid), 
-								.clk(CLK_50M),
-								.finish(ready_to_read));
   
   
   
@@ -328,18 +334,7 @@ flash flash_inst (
     .flash_mem_readdatavalid (flash_mem_readdatavalid),
     .flash_mem_byteenable    (flash_mem_byteenable)
 );
-/*
-Address_processing addrToAudio (.clk_50MHz(CLK_50M),
-										 .clk_22(Clock_22K_Sync),
-										 .ready_to_read(ready_to_read),
-										 .address_ctrl(address_ctrl),
-										 .Song_Data(flash_mem_readdata),	//flash_mem_readdata
-										 .startFlash(startFlash),
-										 .read(flash_mem_read),
-										 .byteenable(flash_mem_byteenable),
-										 .audio_data(audio_data),
-										 .address(flash_mem_address));
-*/
+
 assign Sample_Clk_Signal = Clock_1KHz;
 
 //Audio Generation Signal
@@ -498,14 +493,14 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
 					    .clk(CLK_50M),
                 
                         //LCD Display values
-                      .InH(8'hAA),//(8'hAA),
-                      .InG/*(flash_mem_address[7:0]),*/(8'hBB),
-                      .InF(8'h01),
-                       .InE(8'h23),
-                      .InD(8'h45),
-                      .InC(8'h67),
-                      .InB(8'h89),
-                     .InA(8'h00),
+                      .InH(return_data[31:24]),//(8'hAA),
+                      .InG(return_data[23:16]),
+                      .InF(return_data[15:8]),
+                       .InE(return_data[7:0]),
+                      .InD(flash_mem_address[7:0]),
+                      .InC({3'b0,master_finish, 4'hA}),
+                      .InB({3'b0,slave_finish,4'hA}),
+                      .InA({3'b0,Clock_22K_Sync, 4'hA}),
                           
                      //LCD display information signals
                          .InfoH({scope_info15,scope_info14}),
@@ -651,7 +646,7 @@ parameter [15:0] default_scope_sampling_clock_count = 12499; //2KHz
 
 always @ (posedge CLK_50M) 
 begin
-    scope_sampling_clock_count <= default_scope_sampling_clock_count+{{16{speed_control_val[15]}},speed_control_val};
+    scope_sampling_clock_count <= Count_music+{{16{speed_control_val[15]}},speed_control_val};
 end 
 
         
@@ -701,7 +696,7 @@ assign Seven_Seg_Data[3] = regd_actual_7seg_output[15:12];
 assign Seven_Seg_Data[4] = regd_actual_7seg_output[19:16];
 assign Seven_Seg_Data[5] = regd_actual_7seg_output[23:20];
     
-assign actual_7seg_output =  scope_sampling_clock_count;
+assign actual_7seg_output =  Count_music[23:0];
 
 
 

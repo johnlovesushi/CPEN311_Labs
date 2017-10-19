@@ -1,29 +1,31 @@
-module LED_display(clk, LED);
-	input clk;
-	output logic [7:0] LED = 8'b1;
+module LED_display(clk, LED, lock);
+	input clk, lock;
+	output logic [9:0] LED = 10'b1;
 	logic direction = 0;
 	
 	always @ (posedge clk)
-    begin
-		if (direction == 0)
-		begin
-			if (LED < 8'b1000_0000)
-				LED <= LED << 1;
-			else 
+	if (!lock)
+		 begin
+			if (direction == 0)
 			begin
-				direction = ~direction;
-				LED <= LED >> 1;
+				if (LED < 10'b00_1000_0000)
+					LED <= LED << 1;
+				else 
+				begin
+					direction = ~direction;
+					LED <= LED >> 1;
+				end
+			end
+			else
+			begin
+				if (LED > 10'b00_0000_0001)
+					LED <= LED >> 1;
+				else 
+				begin
+					direction = ~direction;
+					LED <= LED << 1;
+				end
 			end
 		end
-		else
-		begin
-			if (LED > 8'b0000_0001)
-				LED <= LED >> 1;
-			else 
-			begin
-				direction = ~direction;
-				LED <= LED << 1;
-			end
-		end
-	end
+	else LED <= 10'b11_1111_1111;
 endmodule
