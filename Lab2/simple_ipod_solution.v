@@ -248,7 +248,7 @@ Clock_Divider Gen_1Hz_clk( //Generate 1 Hz Clock - 1s
 									); 
 
 //LED Display from Lab1
-LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[9:0]), .lock(SW[9]));
+LED_display one_hz_led (.clk(Clock_1Hz_LED), .LED(LED[9:0]));
 
 //Sync two clks, Clock_22K_Sync is syncronous with CLK_50
 edge_detect Syncronize_Clocks (.async_sig(Clock_22K), .outclk(CLK_50M), .out_sync_sig(Clock_22K_Sync));
@@ -262,8 +262,7 @@ Keyboard_Ctrl keyboard_ctrl(.CLK_50M(CLK_50M),
 									 .rst(reset),
 									 .play(play),
 									 .kbd_data_ready(kbd_data_ready),
-									 .read_finish(master_finish),
-									 .lock(SW[9])	//use switch 0 to lock all keyboard inputs
+									 .read_finish(master_finish)
 									 );
 //=============================================================================
 //

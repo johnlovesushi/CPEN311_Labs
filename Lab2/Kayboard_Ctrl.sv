@@ -7,7 +7,7 @@
  *  Input : CLK_50M , kbd_received_ascii_code (ascii_code from keyboard)
  */
 //==============================================================================
-module Keyboard_Ctrl(input CLK_50M, kbd_data_ready, read_finish, lock, input [7:0] kbd_received_ascii_code, output dir, play, rst);
+module Keyboard_Ctrl(input CLK_50M, kbd_data_ready, read_finish, input [7:0] kbd_received_ascii_code, output dir, play, rst);
 
 //Uppercase Letters
 parameter character_B =8'h42; //backwards
@@ -34,7 +34,6 @@ state_type state = Idle;
 
 always_ff @ (posedge CLK_50M)
 begin
-	if (!lock) begin  // lock 
 		if (kbd_received_ascii_code == character_R && kbd_data_ready)	//only go to this branch if R key is pressed
 		 begin
 			if (state == Idle) state <= Idle;
@@ -58,7 +57,5 @@ begin
 			  default: state <= Idle;
 			endcase
 		end
-	end
-	else state <= state;
 end
 endmodule
