@@ -37,7 +37,7 @@
                     CONSTANT ISR_preserve_s2, 02        ;Preserve s2 contents during ISR
                     CONSTANT ISR_preserve_s3, 03        ;Preserve s3 contents during ISR
                     ;
-						  CONSTANT carry_stored_data, 05 	  ; Use to store the carry data
+		    CONSTANT carry_stored_data, 04 	  ; Use to store the carry data
                     CONSTANT stored_data, 06        	  ; Use to store the data
                     CONSTANT counter, 07                ; Use to be as counter
                     ;
@@ -58,7 +58,7 @@
                     ; become lower than intended. Interrupts may effect the timing of software based
                     ; delays.
                     ;
-                    CONSTANT delay_1us_constant, 04
+                    CONSTANT delay_1us_constant, 05
                     ;
                     ;
                     ;
