@@ -18,7 +18,6 @@ parameter clk_freq_in_hz = 25000000
 //--
 //-- Signals used to connect KCPSM3 to program ROM and I/O logic
 //--
-
 wire[9:0]  address;
 wire[17:0]  instruction;
 wire[7:0]  port_id;
@@ -107,7 +106,7 @@ pacoblaze3 led_8seg_kcpsm
 always @ (posedge clk)
  begin
     case (port_id[7:0])
-        8'h0:    in_port <= abs_input_data;  // take absolute value to assembly code
+        8'h0:    in_port <= input_data;  // take absolute value to assembly code
         default: in_port <= 8'bx;
     endcase
 end
@@ -131,7 +130,19 @@ begin
 		led_0 <= out_port;
 end
 
-
+/*always@* begin
+	casex(led_temp)
+		8'b1xxx_xxxx: led = 8'b1111_1111;
+		8'b01xx_xxxx: led = 8'b1111_1110;
+		8'b001x_xxxx: led = 8'b1111_1100;
+		8'b0001_xxxx: led = 8'b1111_1000;
+		8'b0000_1xxx: led = 8'b1111_0000;
+		8'b0000_01xx: led = 8'b1110_0000;
+		8'b0000_001x: led = 8'b1100_0000;
+		8'b0000_0001: led = 8'b1000_0000;
+		8'b0000_0000: led = 8'b0000_0000;
+	endcase
+end*/
 //
 //  --
 //  ----------------------------------------------------------------------------------------------------------------------------------
@@ -141,10 +152,10 @@ end
 //  -- adding the output registers to the processor
 //  --
 //   
-reg [7:0] abs_input_data;
+/*reg [7:0] abs_input_data;
 always @ (*) begin 
 	if(input_data[7] == 1'b1) abs_input_data <= -input_data;	//negative value, convert to its absolute value
 	else abs_input_data <= input_data;  // positive value, no need to convert it
-end
+end*/
 
 endmodule
