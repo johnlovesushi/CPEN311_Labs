@@ -29,16 +29,16 @@ always@(posedge CLOCK_50) begin
 		//if (reset)	state <= idle;
 		//else
 		case(state)
-			idle: 					state <= init_counter;
-			init_counter:  		begin counter <= 0; 	state <= counter_increment; end
-			counter_increment: 	begin data <= counter;
+			idle: state <= init_counter;
+			init_counter: begin counter <= 0; 	state <= counter_increment; end
+			counter_increment: begin data <= counter;
 											 address <= counter;
 											 counter <= counter + 1;
 											 if ( counter == 255 ) state <= finish;
 											 else  state <= counter_increment;
-										end
-			finish: 					state <= idle;
-			default: 				state <= idle;
+									 end
+			finish: state <= idle;
+			default: state <= idle;
 			endcase
 end 
 endmodule

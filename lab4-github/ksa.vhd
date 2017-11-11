@@ -25,7 +25,7 @@ architecture rtl of ksa is
     );
     END COMPONENT;
     
-		 CoMPONENT rc4_task1 IS 
+		CoMPONENT rc4_task1 IS 
 	   PORT
 	   (
 	   	clk : IN STD_LOGIC;
