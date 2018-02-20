@@ -1,0 +1,67 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=C:\Users\t2v0b\Desktop\Lab5\New --output-directory=C:\Users\t2v0b\Desktop\Lab5\New\DE1_SoC_QSYS --report-file=bsf:C:\Users\t2v0b\Desktop\Lab5\New\DE1_SoC_QSYS\DE1_SoC_QSYS.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:\Users\t2v0b\Desktop\Lab5\New\DE1_SoC_QSYS.qsys --remove-qsys-generate-warning
+Progress: Loading New/DE1_SoC_QSYS.qsys
+Progress: Reading input file
+Progress: Adding audio [audio2fifo 1.0]
+Progress: Parameterizing module audio
+Progress: Adding audio_sel [altera_avalon_pio 14.1]
+Progress: Parameterizing module audio_sel
+Progress: Adding clk_25_in [altera_clock_bridge 14.1]
+Progress: Parameterizing module clk_25_in
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding cpu [altera_nios2_qsys 14.1]
+Progress: Parameterizing module cpu
+Progress: Adding dds_increment [altera_avalon_pio 14.1]
+Progress: Parameterizing module dds_increment
+Progress: Adding div_freq [altera_avalon_pio 14.1]
+Progress: Parameterizing module div_freq
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 14.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding key [altera_avalon_pio 14.1]
+Progress: Parameterizing module key
+Progress: Adding keyboard_keys [altera_avalon_pio 14.1]
+Progress: Parameterizing module keyboard_keys
+Progress: Adding lfsr_clk_interrupt_gen [altera_avalon_pio 14.1]
+Progress: Parameterizing module lfsr_clk_interrupt_gen
+Progress: Adding lfsr_val [altera_avalon_pio 14.1]
+Progress: Parameterizing module lfsr_val
+Progress: Adding modulation_selector [altera_avalon_pio 14.1]
+Progress: Parameterizing module modulation_selector
+Progress: Adding mouse_pos [altera_avalon_pio 14.1]
+Progress: Parameterizing module mouse_pos
+Progress: Adding pll [altera_pll 14.1]
+Progress: Parameterizing module pll
+Progress: Adding sdram [altera_avalon_new_sdram_controller 14.1]
+Progress: Parameterizing module sdram
+Progress: Adding signal_selector [altera_avalon_pio 14.1]
+Progress: Parameterizing module signal_selector
+Progress: Adding sysid_qsys [altera_avalon_sysid_qsys 14.1]
+Progress: Parameterizing module sysid_qsys
+Progress: Adding timer [altera_avalon_timer 14.1]
+Progress: Parameterizing module timer
+Progress: Adding vga [vga_interface 1.0]
+Progress: Parameterizing module vga
+Progress: Adding vga_clk_bridge_out [altera_clock_bridge 14.1]
+Progress: Parameterizing module vga_clk_bridge_out
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: DE1_SoC_QSYS.audio.EMPTY: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.audio.FIFO_FULL: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.audio.fifo_used: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: DE1_SoC_QSYS.cpu: Nios II Classic cores are now superseded by improved Gen 2 cores.
+Info: DE1_SoC_QSYS.keyboard_keys: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.lfsr_clk_interrupt_gen: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.lfsr_val: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.mouse_pos: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.pll: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Warning: DE1_SoC_QSYS.pll: Able to implement PLL - Actual settings differ from Requested settings
+Info: DE1_SoC_QSYS.sysid_qsys: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: DE1_SoC_QSYS.sysid_qsys: Time stamp will be automatically updated when this component is generated.
+Warning: DE1_SoC_QSYS.vga.alt_vip_vfr_0: The module properties SIMULATION_MODEL_IN_VERILOG and SIMULATION_MODEL_IN_VHDL can not both be set when using the SIMULATION file property: src_hdl/alt_vipvfr131_vfr.v, src_hdl/alt_vipvfr131_vfr_controller.v, src_hdl/alt_vipvfr131_vfr_control_packet_encoder.v, src_hdl/alt_vipvfr131_prc.v, src_hdl/alt_vipvfr131_prc_core.v, src_hdl/alt_vipvfr131_prc_read_master.v, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_package.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_bursting_master_fifo.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_master.v, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_unpack_data.v, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_slave.v, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_stream_output.v, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_pulling_width_adapter.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_general_fifo.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_fifo_usedw_calculator.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_gray_clock_crosser.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_std_logic_vector_delay.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_one_bit_delay.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_logic_fifo.vhd, C:/altera/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_ram_fifo.vhd
+Info: DE1_SoC_QSYS.vga.vga_clk: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: DE1_SoC_QSYS.vga.vga_clk: Able to implement PLL with user settings
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)

@@ -1,0 +1,11 @@
+module Modulation(input clk,
+						input ctrl,
+						input  [11:0] in1,	//cos
+						input  [11:0] in2,	//cos_negative
+						output [11:0] out1,	//ask
+						output [11:0] out2);	//bpsk
+
+	always@(posedge clk)
+		if (ctrl) begin out1 <= in2; out2 <= in2; end
+		else begin out1 <= 0; out2 <= in1; end
+endmodule

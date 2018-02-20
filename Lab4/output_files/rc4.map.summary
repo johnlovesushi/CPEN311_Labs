@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Mon Nov 13 23:29:08 2017
+Quartus II 64-Bit Version : 14.1.0 Build 186 12/03/2014 SJ Full Version
+Revision Name : rc4
+Top-level Entity Name : rc4_FSM
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 220
+Total pins : 67
+Total virtual pins : 0
+Total block memory bits : 2,304
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0
